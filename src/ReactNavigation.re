@@ -14,6 +14,11 @@ module Native = {
   external createAppContainer: 'a => ReasonReact.reactElement = "";
 };
 
+module Web = {
+  [@bs.module "@react-navigation/web"]
+  external createBrowserApp: 'a => ReasonReact.reactElement = "";
+};
+
 module Stack = {
   [@bs.module "react-navigation-stack"]
   external stackView: ReasonReact.reactElement = "StackView";
