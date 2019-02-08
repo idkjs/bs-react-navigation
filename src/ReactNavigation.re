@@ -7,6 +7,9 @@ module Core = {
 
   [@bs.module "@react-navigation/core"]
   external createNavigator: ('a, 'b, 'c) => ReasonReact.reactElement = "";
+
+  [@bs.module "@react-navigation/core"]
+  external createSwitchNavigator: ('a, 'b, 'c) => ReasonReact.reactElement = "";
 };
 
 module Native = {
