@@ -98,7 +98,7 @@ module Create = (Config: SwitchConfig) => {
 
   /* navigator */
   let navigator =
-    ReactNavigation.Core.createSwitchNavigator(
+    ReactNavigation.Core.createNavigator(
       ReactNavigation.Switch.switchView,
       router,
       config,
