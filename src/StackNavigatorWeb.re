@@ -50,7 +50,7 @@ module Create = (Config: StackConfig) => {
     navigationOptions: ScreenOptions.t => screenOptions,
   };
 
-  let containerDisplayName = "$bs-react-navigation_container";
+  let containerDisplayName = "#router";
 
   let makeNavigationProp = (navigation: NavigationProp.t) => {
     push: route =>

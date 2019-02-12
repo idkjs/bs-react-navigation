@@ -1,4 +1,7 @@
-type navigation('a) = {navigate: 'a => unit};
+type navigation('a) = {
+  navigate: 'a => unit,
+  goBack: 'a => unit
+};
 
 [@bs.deriving abstract]
 type screenOptions = {
@@ -31,6 +34,8 @@ module Create = (Config: SwitchConfig) => {
 
     [@bs.send] external navigate: (t, string, routeProps) => unit = "navigate";
 
+    [@bs.send] external goBack: (unit) => unit = "goBack";
+
     [@bs.get "state"] external getState: t => State.t = "";
 
     let getParams = t => getState(t) |> State.getParams;
@@ -47,7 +52,7 @@ module Create = (Config: SwitchConfig) => {
     navigationOptions: ScreenOptions.t => screenOptions,
   };
 
-  let containerDisplayName = "$bs-react-navigation_container";
+  let containerDisplayName = "#router";
 
   let makeNavigationProp = (navigation: NavigationProp.t) => {
     navigate: route =>
@@ -56,6 +61,7 @@ module Create = (Config: SwitchConfig) => {
         containerDisplayName,
         routeProps(~route),
       ),
+    goBack: (_) => NavigationProp.goBack()
   };
 
   let getCurrentScreen = (navigation: NavigationProp.t) => {
